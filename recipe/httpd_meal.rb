@@ -158,15 +158,18 @@ class HTTPdMeal
   def apr_util_recipe
     @apr_util_recipe ||= AprUtilRecipe.new('apr-util', '1.6.1', apr_path: apr_recipe.path,
                                                                 apr_iconv_path: apr_iconv_recipe.path,
-                                                                md5: 'bd502b9a8670a8012c4d90c31a84955f')
+                                                                md5: 'bd502b9a8670a8012c4d90c31a84955f',
+                                                                sources_export_dir: @options[:sources_export_dir])
   end
 
   def apr_iconv_recipe
     @apr_iconv_recipe ||= AprIconvRecipe.new('apr-iconv', '1.2.2', apr_path: apr_recipe.path,
-                                                                   md5: '60ae6f95ee4fdd413cf7472fd9c776e3')
+                                                                   md5: '60ae6f95ee4fdd413cf7472fd9c776e3',
+                                                                   sources_export_dir: @options[:sources_export_dir])
   end
 
   def apr_recipe
-    @apr_recipe ||= AprRecipe.new('apr', '1.6.3', md5: '57c6cc26a31fe420c546ad2234f22db4')
+    @apr_recipe ||= AprRecipe.new('apr', '1.6.3', md5: '57c6cc26a31fe420c546ad2234f22db4',
+                                                  sources_export_dir: @options[:sources_export_dir])
   end
 end
