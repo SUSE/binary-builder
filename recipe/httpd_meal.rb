@@ -160,7 +160,6 @@ class HTTPdMeal
                                                                 apr_iconv_path: apr_iconv_recipe.path,
                                                                 md5: 'bd502b9a8670a8012c4d90c31a84955f',
                                                                 sources_export_dir: @options[:sources_export_dir])
-  end
 
   def apr_iconv_recipe
     @apr_iconv_recipe ||= AprIconvRecipe.new('apr-iconv', '1.2.2', apr_path: apr_recipe.path,

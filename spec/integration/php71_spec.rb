@@ -10,7 +10,8 @@ describe 'building a binary', :integration do
       extensions_file = File.join(@extensions_dir, 'php7-extensions.yml')
 
       File.write(extensions_file, open(php_extensions_source('7')).read)
-      run_binary_builder('php7', '7.1.0', "--md5=ec2218f97b4edbc35a2d7919ff37a662 --php-extensions-file=#{extensions_file}")
+      _, status = run_binary_builder('php7', '7.1.0', "--md5=ec2218f97b4edbc35a2d7919ff37a662 --php-extensions-file=#{extensions_file}")
+      expect(status).to be_success
       @binary_tarball_location = Dir.glob(File.join(Dir.pwd, 'php7-7.1.0-linux-x64.tgz')).first
     end
 
@@ -40,6 +41,7 @@ describe 'building a binary', :integration do
       expect(tar_contains_file('php/lib/libcassandra.so.2')).to eq true
       expect(tar_contains_file('php/lib/libuv.so.1')).to eq true
       expect(tar_contains_file('php/lib/librdkafka.so.1')).to eq true
+      expect(tar_contains_file('php/lib/libodbc.so')).to eq true
 
       expect(tar_contains_file('php/lib/php/extensions/*/apcu.so')).to eq true
       # removing assertion until ioncube has PHP 7.1 support
@@ -49,6 +51,8 @@ describe 'building a binary', :integration do
       # phalcon does not support php 7.1.x yet
       # https://github.com/phalcon/cphalcon/issues/12444
       expect(tar_contains_file('php/lib/php/extensions/*/phalcon.so')).to eq false
+      expect(tar_contains_file('php/lib/php/extensions/*/odbc.so')).to eq true
+      expect(tar_contains_file('php/lib/php/extensions/*/pdo_odbc.so')).to eq true
 
       expect(tar_contains_file('php/lib/libGeoIP.so.1')).to eq true
       expect(tar_contains_file('php/lib/php/extensions/*/geoip.so')).to eq true

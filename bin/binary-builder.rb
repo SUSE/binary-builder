@@ -19,7 +19,8 @@ recipes = {
      'nginx' => NginxRecipe,
      'godep' => GodepMeal,
      'glide' => GlideRecipe,
-     'go' => GoRecipe
+     'go' => GoRecipe,
+     'dep' => DepRecipe
 }
 
 options = {}

@@ -1,5 +1,4 @@
 # encoding: utf-8
-require_relative 'ant'
 require_relative 'jruby'
 require_relative 'maven'
 require 'fileutils'
@@ -22,8 +21,8 @@ class JRubyMeal
     java_jdk_dir = '/opt/java'
     java_jdk_tar_file = File.join(java_jdk_dir, 'openjdk-8-jdk.tar.gz')
     java_jdk_bin_dir = File.join(java_jdk_dir, 'bin')
-    java_jdk_sha256 = '6468075c92cd9bfa64f79c381dd4a09664521bd43e19aeb4ea87c4274bc6102e'
-    java_buildpack_java_sdk = "https://java-buildpack.cloudfoundry.org/openjdk-jdk/trusty/x86_64/openjdk-1.8.0_121.tar.gz"
+    java_jdk_sha256 = '14016fe0b8005c60013f2c418456ae1e46a8c46569db2900b1eaca589230afcd'
+    java_buildpack_java_sdk = "https://java-buildpack.cloudfoundry.org/openjdk-jdk/trusty/x86_64/openjdk-1.8.0_141.tar.gz"
 
     FileUtils.mkdir_p(java_jdk_dir)
     raise "Downloading openjdk-8-jdk failed." unless system("wget #{java_buildpack_java_sdk} -O #{java_jdk_tar_file}")
@@ -38,9 +37,6 @@ class JRubyMeal
 
     ENV['JAVA_HOME'] = java_jdk_dir
     ENV['PATH'] = "#{ENV['PATH']}:#{java_jdk_bin_dir}"
-
-    ant.cook
-    ant.activate
 
     maven.cook
     maven.activate
@@ -67,9 +63,8 @@ class JRubyMeal
   private
 
   def files_hashs
-    ant.send(:files_hashs) +
-      maven.send(:files_hashs) +
-      jruby.send(:files_hashs)
+    maven.send(:files_hashs) +
+    jruby.send(:files_hashs)
   end
 
   def jruby
@@ -77,7 +72,7 @@ class JRubyMeal
   end
 
   def maven
-    @maven ||= MavenRecipe.new('maven', '3.3.9', md5: '030ce5b3d369f01aca6249b694d4ce03',
+    @maven ||= MavenRecipe.new('maven', '3.5.2', md5: '08c769d4348a88bf9f224d84fa9d2b2b',
       sources_export_dir: @options[:sources_export_dir])
   end
 
