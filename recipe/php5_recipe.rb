@@ -90,13 +90,13 @@ class Php5Recipe < BaseRecipe
   def setup_tar
   system <<-eof
       cp -a #{@hiredis_path}/lib/libhiredis.so* #{path}/lib/
-      cp #{@ioncube_path}/ioncube/ioncube_loader_lin_#{major_version}.so #{zts_path}/ioncube.so
+      #cp #{@ioncube_path}/ioncube/ioncube_loader_lin_#{major_version}.so #{zts_path}/ioncube.so
       cp -a #{@libmemcached_path}/lib/libmemcached.so* #{path}/lib/
       cp -a /usr/lib64/libc-client.so* #{path}/lib/
       cp -a /usr/lib64/libmcrypt.so* #{path}/lib
       cp -a /usr/lib64/libaspell.so* #{path}/lib
       cp -a /usr/lib64/libpspell.so* #{path}/lib
-      # cp -a /usr/lib/x86_64-linux-gnu/libgearman.so* #{path}/lib
+      cp -a /usr/lib64//libgearman.so* #{path}/lib
       cp -a /usr/local/lib64/libcassandra.so* #{path}/lib
       cp -a /usr/lib64/libuv.so* #{path}/lib
       cp -a /usr/local/lib64/librabbitmq.so* #{path}/lib/
