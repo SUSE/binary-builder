@@ -99,7 +99,7 @@ class Php7Recipe < BaseRecipe
     eof
 
     if IonCubeRecipe.build_ioncube?(version)
-      system "cp #{@ioncube_path}/ioncube/ioncube_loader_lin_#{major_version}.so #{zts_path}/ioncube.so"
+      # system "cp #{@ioncube_path}/ioncube/ioncube_loader_lin_#{major_version}.so #{zts_path}/ioncube.so"
     end
 
     system <<-eof
