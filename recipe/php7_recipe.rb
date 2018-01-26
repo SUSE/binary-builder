@@ -92,6 +92,7 @@ class Php7Recipe < BaseRecipe
       cp -a /usr/lib64/libaspell.so* #{path}/lib
       cp -a /usr/lib64/libpspell.so* #{path}/lib
       cp -a /usr/lib64/libmemcached.so* #{path}/lib
+      cp -a /usr/lib64/libmemcachedutil.so* #{path}/lib/
       cp -a /usr/local/lib64/libcassandra.so* #{path}/lib
       cp -a /usr/lib64/libuv.so* #{path}/lib
       cp -a /usr/lib/librdkafka.so* #{path}/lib
