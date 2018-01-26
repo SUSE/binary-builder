@@ -92,6 +92,7 @@ class Php5Recipe < BaseRecipe
       cp -a #{@hiredis_path}/lib/libhiredis.so* #{path}/lib/
       #cp #{@ioncube_path}/ioncube/ioncube_loader_lin_#{major_version}.so #{zts_path}/ioncube.so
       cp -a #{@libmemcached_path}/lib/libmemcached.so* #{path}/lib/
+      cp -a #{@libmemcached_path}/lib/libmemcachedutil.so* #{path}/lib/
       cp -a /usr/lib64/libc-client.so* #{path}/lib/
       cp -a /usr/lib64/libmcrypt.so* #{path}/lib
       cp -a /usr/lib64/libaspell.so* #{path}/lib
