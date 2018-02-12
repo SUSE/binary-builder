@@ -52,6 +52,10 @@ class Php5Recipe < BaseRecipe
       '--enable-fpm',
       '--enable-pcntl=shared',
       '--with-readline=shared',
+      '--enable-sysvsem=shared',
+      '--enable-sysvshm=shared',
+      '--enable-sysvmsg=shared',
+      '--enable-shmop=shared',
       '--with-libdir=lib64'
     ]
   end
