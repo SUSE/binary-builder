@@ -20,7 +20,7 @@ class PhpMeal
     (@native_modules + @extensions).each do |recipe|
       recipe.instance_variable_set('@php_path', php_recipe.path)
 
-      if recipe.name == 'pdo_oci' || recipe.name == 'odbc' || recipe.name == 'pdo_odbc'
+      if recipe.name == 'pdo_oci' || recipe.name == 'odbc' || recipe.name == 'pdo_odbc' || recipe.name == 'readline'
         recipe.instance_variable_set('@version', @version)
         recipe.instance_variable_set('@php_source', "#{php_recipe.send(:tmp_path)}/php-#{@version}")
         recipe.instance_variable_set('@files', [{url: recipe.url, md5: nil}])
@@ -144,11 +144,11 @@ class PhpMeal
   end
 
   def php5_apt_packages
-    php_common_apt_packages + %w(automake freetds-devel)
+    php_common_apt_packages + %w(automake freetds-devel readline-devel)
   end
 
   def php7_apt_packages
-    php_common_apt_packages
+    php_common_apt_packages + %w(libedit-devel)
   end
 
   def php_common_apt_packages
