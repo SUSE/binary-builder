@@ -97,6 +97,9 @@ class Php7Recipe < BaseRecipe
       cp -a /usr/lib64/libuv.so* #{path}/lib
       cp -a /usr/lib/librdkafka.so* #{path}/lib
       cp -a /usr/lib64/libGeoIP.so* #{path}/lib/
+      cp -a /usr/lib64/libgpgme.so* #{path}/lib/
+      cp -a /usr/lib64/libassuan.so* #{path}/lib/
+      cp -a /usr/lib64/libgpg-error.so* #{path}/lib/
     eof
 
     if IonCubeRecipe.build_ioncube?(version)
