@@ -177,7 +177,8 @@ class PhpMeal
       cyrus-sasl-devel
       imap-devel
       krb5-devel
-      net-snmp-devel)
+      net-snmp-devel
+      libgpgme-devel)
   end
 
   def symlink_commands
