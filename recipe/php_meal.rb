@@ -30,9 +30,9 @@ class PhpMeal
 
   def cook
     system <<-eof
-      sudo apt-get update
-      sudo apt-get -y upgrade
-      sudo apt-get -y install #{apt_packages}
+      sudo zypper ref
+      sudo zypper -n up
+      sudo zypper -n in #{apt_packages}
       #{symlink_commands}
     eof
 
